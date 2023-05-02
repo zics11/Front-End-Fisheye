@@ -1,0 +1,28 @@
+{
+    "root": true,
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "parser": "babel-eslint"
+    },
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "rules": {
+        "semi-style": [
+            "error",
+            "last"
+        ],
+        "indent": [
+            "warn",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ]
+    }
+}
