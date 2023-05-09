@@ -1,5 +1,10 @@
 @import url("photographer.css");
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -12,6 +17,8 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    max-width: 1700px;
+    margin: auto;
 }
 
 h1 {
@@ -40,6 +47,7 @@ h1 {
 }
 
 .photographer_section article h2 {
+    margin-top: 20px;
     color: #D3573C;
     font-size: 36px;
 }
@@ -47,4 +55,30 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.photographer_section article a {
+    text-align: center;
+    text-decoration: none;
+}
+
+.photographer_section article div {
+    text-align: center;
+}
+
+.photographer_section article div .locationElement {
+    color: #901C1C;
+    font-size: 13px;
+}
+
+.photographer_section article div .taglineElement {
+    color: black;
+    font-size: 10px;
+}
+
+.photographer_section article div .priceElement {
+    color: #757575;
+    font-size: 9px;
 }

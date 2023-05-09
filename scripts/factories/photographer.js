@@ -1,31 +1,38 @@
 function photographerFactory(data) {
-    const { name, portrait, id, city, country, tagline, price} = data;
+    const { name, portrait, id, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
+        const article = document.createElement('article');
+        const lien = document.createElement('a');
+        lien.href = "index.html";
+        lien.title = name;
+        const img = document.createElement('img');
+        img.setAttribute("src", picture);
+        img.alt =`portrait de ${name}`;
+        const h2 = document.createElement('h2');
         h2.textContent = name;
-        const cityElement = document.createElement('p');
-        cityElement.textContent = city
-        const countryElement = document.createElement('p');
-        countryElement.textContent = country
+        const description = document.createElement('div')
+        const locationElement = document.createElement('p');
+        locationElement.className = "locationElement"
+        locationElement.textContent = `${city}, ${country}`
         const taglineElement = document.createElement('p');
+        taglineElement.className = "taglineElement"
         taglineElement.textContent = tagline
         const priceElement = document.createElement('p');
-        priceElement.textContent = price
+        priceElement.className = "priceElement"      
+        priceElement.textContent = `${price}€/jour`
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(cityElement);
-        article.appendChild(countryElement);
-        article.appendChild(taglineElement);
-        article.appendChild(priceElement);
+        article.appendChild(lien);
+            lien.appendChild(img);
+            lien.appendChild(h2);
+        article.appendChild(description);
+            description.appendChild(locationElement);
+            description.appendChild(taglineElement);
+            description.appendChild(priceElement);
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+    return { name, portrait, id, city, country, tagline, price, getUserCardDOM }
 }
