@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 async function getPhotographers() {
     // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
     // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
@@ -11,16 +12,16 @@ async function getPhotographers() {
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photograph-header");
     let urlcourante = window.location; 
-    const params = (new URL(document.location)).searchParams;
-    const idurl = params.get('id');
-    console.log["params", urlcourante];
-    console.log["idphoto",idurl];
+    const params = (new URL(urlcourante)).searchParams;
+    const idurl = Number(params.get('id'));
+    console.log("params", params);
+    console.log("idphoto",idurl);
 
 
     photographers.forEach((photographer) => {
-        if (photographer.id === 243) {
+        if (photographer.id === idurl) {
             const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
+            const userCardDOM = photographerModel.photographerCardDOM();
             photographersSection.appendChild(userCardDOM);
         }
     });

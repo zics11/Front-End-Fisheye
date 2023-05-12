@@ -6,6 +6,54 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 50px;
+    display: flex;
+}
+
+.photograph-header article {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.photograph-header article img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.photograph-header article h2 {
+    color: #D3573C;
+    font-size: 64px;
+    font-weight: 400;
+}
+
+.photograph-header article .locationElement {
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.photograph-header article .boxPrice {
+    background: #DB8876;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    position: fixed;
+    width: 376px;
+    height: 70px;
+    right: 40px;
+    bottom: -10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .contact_button {
