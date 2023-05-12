@@ -9,17 +9,19 @@ async function getPhotographers() {
     return photographers
 }
 
+console.log("data",getPhotographers())
+
+function idPhotographer() {
+    let urlcourante = window.location;
+    const params = (new URL(urlcourante)).searchParams;
+    const idUrl = Number(params.get('id'));
+    return idUrl
+}
+
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photograph-header");
-    let urlcourante = window.location; 
-    const params = (new URL(urlcourante)).searchParams;
-    const idurl = Number(params.get('id'));
-    console.log("params", params);
-    console.log("idphoto",idurl);
-
-
     photographers.forEach((photographer) => {
-        if (photographer.id === idurl) {
+        if (photographer.id === idPhotographer()) {
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.photographerCardDOM();
             photographersSection.appendChild(userCardDOM);
@@ -27,10 +29,23 @@ async function displayData(photographers) {
     });
 }
 
+async function displayMedia(photographers) {
+    const mediaSection = document.querySelector(".photograph-media");
+    photographers.forEach((photographer) => {
+        const mediaModel = mediaFactory(photographer);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaSection.appendChild(mediaCardDOM);
+    });
+
+
+}
+
 async function init() {
-    // Récupère les datas des photographes
+    // Récupère les datas des photographes & des médias
     const { photographers } = await getPhotographers();
+    const { media } = await getPhotographers();
     displayData(photographers);
+    displayMedia(media);
 }
 
 init();
