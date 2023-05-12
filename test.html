@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Style de base pour la liste déroulante */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /* Style du bouton de la liste déroulante */
+    .dropdown .dropdown-btn {
+      border: none;
+      background-color: #f1f1f1;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    /* Style de la liste déroulante */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    /* Style des options de la liste déroulante */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+    
+    /* Style des options de la liste déroulante au survol */
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    
+    /* Affichage de la liste déroulante lorsque le bouton est survolé */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+<script>
+// Fonction appelée lorsqu'une option est sélectionnée
+    function selectOption(option) {
+      var dropdownBtn = document.getElementById('dropdown-btn');
+      dropdownBtn.textContent = option.textContent;
+    }
+
+    // Appeler la fonction avec l'option par défaut au chargement de la page
+    window.onload = function() {
+      var defaultOption = document.querySelector('.dropdown-content a');
+      selectOption(defaultOption);
+    };
+  </script>
+</head>
+<body>
+  
+  <div class="dropdown">
+    <button id="dropdown-btn" class="dropdown-btn">Sélectionnez une option</button>
+    <div class="dropdown-content">
+      <a href="#" onclick="selectOption(this)">Popularité</a>
+      <a href="#" onclick="selectOption(this)">Date</a>
+      <a href="#" onclick="selectOption(this)">Titre</a>
+    </div>
+  </div>
+  
+</body>
+</html>

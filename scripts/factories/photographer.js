@@ -56,8 +56,11 @@ function photographerFactory(data) {
 
         const boxPrice = document.createElement('div');
         boxPrice.className = 'boxPrice';
+        const divLike = document.createElement('div');
         const like = document.createElement('p');
         like.textContent = `100000`;
+        const icon = document.createElement('i');
+        icon.className = "fa-solid fa-heart";
         const priceElement = document.createElement('p');
         priceElement.className = "priceElement";
         priceElement.textContent = `${price}€/jour`;
@@ -69,7 +72,9 @@ function photographerFactory(data) {
         article.appendChild(button);
         article.appendChild(img)
         article.appendChild(boxPrice);
-        boxPrice.appendChild(like)
+        boxPrice.appendChild(divLike);
+        divLike.appendChild(like);
+        divLike.appendChild(icon);
         boxPrice.appendChild(priceElement)
 
         return (article);
