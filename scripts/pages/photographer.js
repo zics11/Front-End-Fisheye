@@ -34,26 +34,37 @@ async function displayData(photographers) {
     });
 }
 
-async function displayMedia(photographers) {
+
+async function triMediaIdPhotographer(media) {
+    const idPhotographers = idPhotographer()
     const mediaSection = document.querySelector(".photograph-media");
-    photographers.forEach((photographer) => {
-        if (photographer.photographerId === idPhotographer()) {
-            const mediaModel = mediaFactory(photographer);
-            const mediaCardDOM = mediaModel.getMediaCardDOM();
-            mediaSection.appendChild(mediaCardDOM);
-        }
-    });
-
-
+    const mediaFiltres = media.filter(function (medias) {
+        return medias.photographerId === idPhotographers
+    })
+    console.log("mediafiltres", mediaFiltres)
+    mediaFiltres.forEach((media) => {
+        const mediaModel = mediaFactory(media);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaSection.appendChild(mediaCardDOM);
+    })
+    return mediaFiltres    
 }
 
 async function init() {
     // Récupère les datas des photographes & des médias
     const { photographers } = await getPhotographers();
     const { media } = await getPhotographers();
+    console.log("media", media);
     displayData(photographers);
-    displayMedia(media);
+    triMediaIdPhotographer(media);
+
+
 }
 
+
 init();
+
+
+
+
 //Mettre le code JavaScript lié à la page photographer.html
