@@ -1,5 +1,11 @@
 #contact_modal {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(0, 0%, 98%, 0.412);
 }
 
 .photograph-header {
@@ -73,7 +79,7 @@
     align-items: center;
 }
 
-.photograph-dropdown p{
+.photograph-dropdown p {
     font-size: 18px;
     font-weight: 700;
 }
@@ -149,7 +155,49 @@
     transform: rotateX(180deg)
 }
 
-.contact_button {
+.photograph-media {
+    margin: 0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.photograph-media img,
+video {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-top: 35px;
+}
+
+.photograph-media div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.photograph-media h2 {
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 21px;
+}
+
+.photograph-media span {
+    color: #901C1C;
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.photograph-media span::after {
+    font: var(--fa-font-regular);
+    content: "\f004";
+    margin-left: 5px;
+}
+
+.contact_button, form button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -165,18 +213,21 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    padding: 15px 35px 25px 35px;
+    margin: 50px auto 0px auto;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: first baseline;
 }
 
 .modal header img {
@@ -184,9 +235,9 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 54px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
 }
 
 form {
@@ -198,7 +249,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 30px;
 }
 
 form div {
@@ -206,12 +257,35 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 5px;
 }
 
-form input {
-    width: 100%;
-    height: 68px;
+form input,
+textarea {
+    width: 94%;
+    height: 60px;
     border: none;
     border-radius: 5px;
+    font-size: 30px;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+form input:-internal-autofill-selected{
+    background-color: white!important;
+}
+
+form textarea {
+    height: 170px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    resize: none;
+}
+
+.error-message {
+    color: #901C1C;
+    font-weight: bold;
+}
+form button{
+    margin-top: 15px;
 }

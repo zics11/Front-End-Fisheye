@@ -35,15 +35,33 @@
   <div id="contact_modal">
     <div class="modal">
       <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
+        <div class="modal-header">
+          <h2>Contactez-moi</h2>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <img src="assets/icons/close.svg" onclick="closeModal()" class="modal-close" />
+      </header>
+      <form id="form-contact">
+        <div>
+          <label for="nom">Nom:</label>
+          <input type="text" id="nom" name="nom">
+          <span id="nomError" class="error-message"></span>
+        </div>
+        <div>
+          <label for="prenom">Prénom:</label>
+          <input type="text" id="prenom" name="prenom">
+          <span id="prenomError" class="error-message"></span>
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" novalidate>
+          <span id="emailError" class="error-message"></span>
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message"></textarea>
+          <span id="messageError" class="error-message"></span>
+        </div>
+        <button type="submit class=" contact_button">Envoyer</button>
       </form>
     </div>
   </div>

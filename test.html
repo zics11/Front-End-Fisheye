@@ -1,76 +1,108 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <style>
-    /* Style de base pour la liste déroulante */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    
-    /* Style du bouton de la liste déroulante */
-    .dropdown .dropdown-btn {
-      border: none;
-      background-color: #f1f1f1;
-      padding: 8px 16px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    
-    /* Style de la liste déroulante */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    
-    /* Style des options de la liste déroulante */
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      cursor: pointer;
-    }
-    
-    /* Style des options de la liste déroulante au survol */
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-    
-    /* Affichage de la liste déroulante lorsque le bouton est survolé */
-    .dropdown:hover .dropdown-content {
-      display: block;
+    .error-message {
+      color: red;
     }
   </style>
-<script>
-// Fonction appelée lorsqu'une option est sélectionnée
-    function selectOption(option) {
-      var dropdownBtn = document.getElementById('dropdown-btn');
-      dropdownBtn.textContent = option.textContent;
-    }
-
-    // Appeler la fonction avec l'option par défaut au chargement de la page
-    window.onload = function() {
-      var defaultOption = document.querySelector('.dropdown-content a');
-      selectOption(defaultOption);
-    };
-  </script>
 </head>
+
 <body>
-  
-  <div class="dropdown">
-    <button id="dropdown-btn" class="dropdown-btn">Sélectionnez une option</button>
-    <div class="dropdown-content">
-      <a href="#" onclick="selectOption(this)">Popularité</a>
-      <a href="#" onclick="selectOption(this)">Date</a>
-      <a href="#" onclick="selectOption(this)">Titre</a>
+
+  <form id="myForm">
+    <div>
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" name="nom">
+      <span id="nomError" class="error-message"></span>
     </div>
-  </div>
-  
+    <div>
+      <label for="prenom">Prénom:</label>
+      <input type="text" id="prenom" name="prenom">
+      <span id="prenomError" class="error-message"></span>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" novalidate>
+      <span id="emailError" class="error-message"></span>
+    </div>
+    <div>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message"></textarea>
+      <span id="messageError" class="error-message"></span>
+    </div>
+    <div>
+      <button type="submit">Envoyer</button>
+    </div>
+  </form>
+
+  <script>
+    var form = document.getElementById('myForm');
+    var nomInput = document.getElementById('nom');
+    var prenomInput = document.getElementById('prenom');
+    var emailInput = document.getElementById('email');
+    var messageInput = document.getElementById('message');
+
+    // ...
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var isFormValid = true;
+
+      // Vérifier la validité du champ Nom
+      if (nomInput.value === '') {
+        document.getElementById('nomError').textContent = 'Veuillez saisir votre nom.';
+        isFormValid = false;
+      } else {
+        document.getElementById('nomError').textContent = '';
+      }
+
+      // Vérifier la validité du champ Prénom
+      if (prenomInput.value === '') {
+        document.getElementById('prenomError').textContent = 'Veuillez saisir votre prénom.';
+        isFormValid = false;
+      } else {
+        document.getElementById('prenomError').textContent = '';
+      }
+
+      // Vérifier la validité du champ Email
+      if (emailInput.value === '') {
+        document.getElementById('emailError').textContent = 'Veuillez saisir votre email.';
+        isFormValid = false;
+      } else if (!isValidEmail(emailInput.value)) {
+        document.getElementById('emailError').textContent = 'Veuillez saisir un email valide.';
+        isFormValid = false;
+      } else {
+        document.getElementById('emailError').textContent = '';
+      }
+
+      // Vérifier la validité du champ Message
+      if (messageInput.value === '') {
+        document.getElementById('messageError').textContent = 'Veuillez saisir votre message.';
+        isFormValid = false;
+      } else {
+        document.getElementById('messageError').textContent = '';
+      }
+
+      // Si le formulaire est valide, afficher les données dans la console
+      if (isFormValid) {
+        console.log('Nom:', nomInput.value);
+        console.log('Prénom:', prenomInput.value);
+        console.log('Email:', emailInput.value);
+        console.log('Message:', messageInput.value);
+        form.reset();
+      }
+    });
+
+    // ...
+
+    // Fonction pour vérifier la validité de l'email
+    function isValidEmail(email) {
+      var emailRegex = /^\S+@\S+\.\S+/;
+      return emailRegex.test(email);
+    }
+  </script>
 </body>
+
 </html>

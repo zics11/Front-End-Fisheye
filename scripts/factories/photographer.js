@@ -49,7 +49,8 @@ function photographerFactory(data) {
         taglineElement.textContent = tagline
         const button = document.createElement("button");
         button.className = "contact_button";
-        button.textContent = "Contactez-moi"
+        button.textContent = "Contactez-moi";
+        button.setAttribute("onclick", "displayModal()");
         const img = document.createElement('img');
         img.setAttribute("src", picture);
         img.alt = `portrait de ${name}`;
