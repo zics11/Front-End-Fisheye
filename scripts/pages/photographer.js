@@ -1,26 +1,25 @@
 /* eslint-disable no-undef */
 async function getPhotographers() {
-    // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-    // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-    const reponse = await fetch('data/photographers.json');
-    const photographers = await reponse.json();
+    const response = await fetch('data/photographers.json');
+    const data = await response.json();
+    const photographers = data.photographers;
+    const media = data.media;
 
-    // et bien retourner le tableau photographers seulement une fois récupéré
-    return photographers
+    return { photographers, media };
 }
 
-console.log("data", getPhotographers())
+console.log("data", getPhotographers());
 
 function idPhotographer() {
     let urlcourante = window.location;
-    const params = (new URL(urlcourante)).searchParams;
+    const params = new URL(urlcourante).searchParams;
     const idUrl = Number(params.get('id'));
-    return idUrl
+    return idUrl;
 }
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photograph-header");
-    const contactSection = document.querySelector(".modal-header");
+    const photographersSection = document.querySelector('.photograph-header');
+    const contactSection = document.querySelector('.modal-header');
     photographers.forEach((photographer) => {
         if (photographer.id === idPhotographer()) {
             const photographerModel = photographerFactory(photographer);
@@ -33,38 +32,27 @@ async function displayData(photographers) {
         }
     });
 }
-
+const mediaSection = document.querySelector('.photograph-media');
 
 async function triMediaIdPhotographer(media) {
-    const idPhotographers = idPhotographer()
-    const mediaSection = document.querySelector(".photograph-media");
+    const idPhotographers = idPhotographer();
     const mediaFiltres = media.filter(function (medias) {
-        return medias.photographerId === idPhotographers
-    })
-    console.log("mediafiltres", mediaFiltres)
-    mediaFiltres.forEach((media) => {
-        const mediaModel = mediaFactory(media);
+        return medias.photographerId === idPhotographers;
+    });
+    console.log("mediafiltres", mediaFiltres);
+    mediaFiltres.forEach((media, index) => {
+        const mediaModel = mediaFactory(media, index);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaSection.appendChild(mediaCardDOM);
-    })
-    return mediaFiltres    
+        console.log("index", mediaFiltres.indexOf(media));
+        media.index = mediaFiltres.indexOf(media);
+    });
+    return mediaFiltres;
 }
 
-async function init() {
-    // Récupère les datas des photographes & des médias
-    const { photographers } = await getPhotographers();
-    const { media } = await getPhotographers();
+(async function init() {
+    const { photographers, media } = await getPhotographers();
     console.log("media", media);
     displayData(photographers);
     triMediaIdPhotographer(media);
-
-
-}
-
-
-init();
-
-
-
-
-//Mettre le code JavaScript lié à la page photographer.html
+})();
