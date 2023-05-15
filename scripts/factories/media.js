@@ -11,6 +11,7 @@ function mediaFactory(data, index) {
             const img = document.createElement('img');
             img.setAttribute("src", picture);
             img.className = "media-card";
+            img.classList.add("image-card");
             img.alt = title;
             img.setAttribute("onclick",`displayLightboxModal(${index})`);
             const description = document.createElement('div')
@@ -27,7 +28,10 @@ function mediaFactory(data, index) {
             const article = document.createElement('article');
             const videos = document.createElement('video');
             videos.setAttribute("src", movie);
+            videos.className = "media-card";
+            videos.classList.add("video-card");
             videos.alt = title;
+            videos.setAttribute("onclick", `displayLightboxModal(${index})`);
             const description = document.createElement('div')
             const titre = document.createElement('h2');
             titre.textContent = title;
