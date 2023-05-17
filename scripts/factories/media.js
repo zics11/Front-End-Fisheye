@@ -13,12 +13,14 @@ function mediaFactory(data, index) {
             img.className = "media-card";
             img.classList.add("image-card");
             img.alt = title;
-            img.setAttribute("onclick",`displayLightboxModal(${index})`);
+            img.setAttribute("onclick", `displayLightboxModal(${index})`);
             const description = document.createElement('div')
             const titre = document.createElement('h2');
             titre.textContent = title;
             const like = document.createElement('span');
             like.textContent = likes;
+            like.setAttribute("onclick", `addLike(${index})`);
+            like.className = "like";
             article.appendChild(img);
             article.appendChild(description);
             description.appendChild(titre);
@@ -37,6 +39,8 @@ function mediaFactory(data, index) {
             titre.textContent = title;
             const like = document.createElement('span');
             like.textContent = likes;
+            like.setAttribute("onclick", `addLike(${index})`);
+            like.className = "like";
             article.appendChild(videos);
             article.appendChild(description);
             description.appendChild(titre);

@@ -50,9 +50,53 @@ async function triMediaIdPhotographer(media) {
     return mediaFiltres;
 }
 
+function addLike(index) {
+    const likes = document.querySelectorAll('.like')
+    const like = likes[index];
+    let totalLike = document.querySelector('.total-like')
+    if (like.classList.contains('like-ok')) {
+        like.classList.remove('like-ok')
+        --like.textContent
+        --totalLike.textContent
+
+    } else {
+        like.classList.add('like-ok')
+        ++like.textContent
+        ++totalLike.textContent
+    }
+
+}
+
+function countLike() {
+    const likes = document.querySelectorAll('.like');
+    let totalLikes = 0;
+
+    likes.forEach(like => {
+        const likesValue = parseInt(like.textContent);
+        totalLikes += likesValue;
+    });
+
+    const divLike = document.querySelector('.div-like')
+    const like = document.createElement('p');
+    like.textContent = totalLikes;
+    like.className = 'total-like'
+    const icon = document.createElement('i');
+    icon.className = "fa-solid fa-heart";
+
+    divLike.appendChild(like);
+    divLike.appendChild(icon);
+
+
+    console.log('Total likes:', totalLikes);
+}
+
+
+
+
 (async function init() {
     const { photographers, media } = await getPhotographers();
     console.log("media", media);
     displayData(photographers);
     triMediaIdPhotographer(media);
+    countLike();
 })();

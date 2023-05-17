@@ -183,6 +183,10 @@ video {
     color: #901C1C;
     font-weight: 400;
     font-size: 21px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 300px;
 }
 
 .photograph-media span {
@@ -191,10 +195,14 @@ video {
     font-size: 21px;
 }
 
-.photograph-media span::after {
+.photograph-media span:after {
     font: var(--fa-font-regular);
     content: "\f004";
     margin-left: 5px;
+}
+
+.like-ok:after {
+    font: var(--fa-font-solid)!important;
 }
 
 .contact_button,
@@ -312,7 +320,7 @@ form button {
     justify-content: space-between;
     align-items: center;
     position: relative;
-        color: #901C1C;
+    color: #901C1C;
 }
 
 #media-content {
@@ -332,13 +340,14 @@ form button {
     margin-top: 0;
 }
 
-.lightbox-close{
+.lightbox-close {
     position: absolute;
     right: 0;
-    top:0;
+    top: 0;
     font-size: 50px;
 }
 
-.fa-chevron-left, .fa-chevron-right{
+.fa-chevron-left,
+.fa-chevron-right {
     font-size: 50px;
 }

@@ -25,12 +25,17 @@ function displayLightboxModal(index) {
         modalContent.appendChild(titleElement);
     } else if (mediaElement.classList.contains('video-card')) {
         const videoSrc = mediaElement.src;
+        const videoTitle = mediaElement.alt;
         const videoElement = document.createElement('video');
+        const titleElement = document.createElement('h2')
         videoElement.src = videoSrc;
         videoElement.className = "media"
+        titleElement.textContent = videoTitle;
         videoElement.autoplay = true;
         videoElement.controls = true;
         modalContent.appendChild(videoElement);
+        modalContent.appendChild(titleElement);
+
     }
 
     // Afficher la modale
@@ -38,6 +43,8 @@ function displayLightboxModal(index) {
 }
 
 // Fonction pour afficher le média précédent
+
+
 function showPreviousMedia() {
     const mediaElements = Array.from(document.querySelectorAll('.media-card'));
     const modalContent = document.getElementById('media-content');
@@ -53,6 +60,19 @@ function showPreviousMedia() {
 
     displayLightboxModal(previousIndex);
 }
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowLeft') {
+        showPreviousMedia();
+    }
+    if (event.key === 'ArrowRight') {
+        showNextMedia();
+    }
+    if (event.key === 'Escape') {
+        closeLightbox();
+    }
+
+});
 
 // Fonction pour afficher le média suivant
 function showNextMedia() {
@@ -70,6 +90,7 @@ function showNextMedia() {
 
     displayLightboxModal(nextIndex);
 }
+
 
 
 function closeLightbox() {
