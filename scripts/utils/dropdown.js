@@ -1,10 +1,13 @@
 // Fonction appelée lorsqu'une option est sélectionnée
-function selectOption(option) {
-    var dropdownBtn = document.getElementById('dropdown-btn');
-    var selectedOptionText = option.textContent;
+async function selectTri(option) {
+    const { media } = await getPhotographers();
+    console.log("option", option)
+    let dropdownBtn = document.getElementById('dropdown-btn');
+    let selectedOptionText = option.textContent;
+
 
     // Réinitialiser les styles de toutes les options
-    var options = document.querySelectorAll('.dropdown-content a');
+    let options = document.querySelectorAll('.dropdown-content a');
     options.forEach(function (opt) {
         opt.style.display = "block";
     });
@@ -14,10 +17,42 @@ function selectOption(option) {
 
     // Mettre à jour le titre du menu avec l'option sélectionnée
     dropdownBtn.textContent = selectedOptionText;
+    let mediaOrdonnees = Array.from(media);
+
+    if (selectedOptionText === 'Popularité') {
+        mediaOrdonnees.sort(function (a, b) {
+            return a.likes - b.likes;
+        });
+        document.querySelector(".photograph-media").innerHTML = "";
+        triMediaIdPhotographer(mediaOrdonnees);
+        console.log("option")
+    }
+
+    if (selectedOptionText === 'Date') {
+        mediaOrdonnees.sort(function (a, b) {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateA.getTime() - dateB.getTime();
+        });
+        document.querySelector(".photograph-media").innerHTML = "";
+        triMediaIdPhotographer(mediaOrdonnees);
+    }
+
+    if (selectedOptionText === 'Titre') {
+        console.log("mediaOrdonnees title a", mediaOrdonnees)
+        mediaOrdonnees.sort(function (a, b) {
+            return a.title.localeCompare(b.title);
+        });
+        document.querySelector(".photograph-media").innerHTML = "";
+        console.log("mediaOrdonnees title b", mediaOrdonnees)
+
+        triMediaIdPhotographer(mediaOrdonnees);
+    }
+
 }
 
 // Appeler la fonction avec l'option par défaut au chargement de la page
 window.onload = function () {
-    var defaultOption = document.querySelector('.dropdown-content a');
-    selectOption(defaultOption);
+    let defaultOption = document.querySelector('.dropdown-content a');
+    selectTri(defaultOption);
 };
