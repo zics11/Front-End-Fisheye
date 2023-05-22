@@ -202,7 +202,7 @@ video {
 }
 
 .like-ok:after {
-    font: var(--fa-font-solid)!important;
+    font: var(--fa-font-solid) !important;
 }
 
 .contact_button,
@@ -344,10 +344,10 @@ form button {
     position: absolute;
     right: 0;
     top: 0;
-    font-size: 50px;
+    font-size: 3.125em;
 }
 
 .fa-chevron-left,
 .fa-chevron-right {
-    font-size: 50px;
+    font-size: 3.125em;
 }
