@@ -1,5 +1,6 @@
 // Fonction appelée lorsqu'une option est sélectionnée
 async function selectTri(option) {
+    // eslint-disable-next-line no-undef
     const { media } = await getPhotographers();
     console.log("option", option)
     let dropdownBtn = document.getElementById('dropdown-btn');
@@ -24,6 +25,7 @@ async function selectTri(option) {
             return a.likes - b.likes;
         });
         document.querySelector(".photograph-media").innerHTML = "";
+        // eslint-disable-next-line no-undef
         triMediaIdPhotographer(mediaOrdonnees);
         console.log("option")
     }
@@ -35,17 +37,17 @@ async function selectTri(option) {
             return dateA.getTime() - dateB.getTime();
         });
         document.querySelector(".photograph-media").innerHTML = "";
+        // eslint-disable-next-line no-undef
         triMediaIdPhotographer(mediaOrdonnees);
     }
 
     if (selectedOptionText === 'Titre') {
-        console.log("mediaOrdonnees title a", mediaOrdonnees)
         mediaOrdonnees.sort(function (a, b) {
             return a.title.localeCompare(b.title);
         });
         document.querySelector(".photograph-media").innerHTML = "";
-        console.log("mediaOrdonnees title b", mediaOrdonnees)
 
+        // eslint-disable-next-line no-undef
         triMediaIdPhotographer(mediaOrdonnees);
     }
 

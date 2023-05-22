@@ -50,6 +50,7 @@ async function triMediaIdPhotographer(media) {
     return mediaFiltres;
 }
 
+// eslint-disable-next-line no-unused-vars
 function addLike(index) {
     const likes = document.querySelectorAll('.like')
     const like = likes[index];
