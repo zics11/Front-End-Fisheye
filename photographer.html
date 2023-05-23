@@ -14,7 +14,7 @@
 <body>
   <header>
     <a href="/index.html" role="img" title="Fisheye Home page">
-      <img src="assets/images/logo.png" class="logo" role="link" alt="logo" aria-label="logo">
+      <img src="assets/images/logo.png" class="logo" role="link" alt="Fisheye Home page" aria-label="logo">
     </a>
   </header>
   <main id="main">
@@ -23,25 +23,29 @@
     <section class="photograph-dropdown">
       <p>Trier par</p>
       <div class="dropdown">
-        <button id="dropdown-btn" class="dropdown-btn"><span class="fa-solid fa-chevron-up"></span></button>
-        <div class="dropdown-content">
-          <a href="#" onclick="selectTri(this)">Popularité</a>
-          <a href="#" onclick="selectTri(this)">Date</a>
-          <a href="#" onclick="selectTri(this)">Titre</a>
-        </div>
+        <button id="dropdown-btn" class="dropdown-btn" aria-haspopup="true" aria-expanded="false"
+          aria-controls="dropdown-content" aria-activedescendant="selectedOption">
+          Popularité
+        </button>
+        <ul id="dropdown-content" class="dropdown-content" role="menu" aria-labelledby="dropdown-btn">
+          <li tabindex="0" role="menuitem" id="selectedOption" onclick="selectOption('Popularité')" onkeypress="selectOption('Popularité')">Popularité</li>
+          <li tabindex="0" role="menuitem" onclick="selectOption('Date')" onkeypress="selectOption('Date')">Date</li>
+          <li tabindex="0" role="menuitem" onclick="selectOption('Titre')" onkeypress="selectOption('Titre')">Titre</li>
+        </ul>
       </div>
     </section>
     <section class="photograph-media">
     </section>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" role="dialog" aria-label>
     <div class="modal">
       <header>
         <div class="modal-header">
           <h2>Contactez-moi</h2>
         </div>
         <img src="assets/icons/close.svg" onclick="closeModal()" class="modal-close" role="button"
-          alt="button en forme de croix pour fermer le formulaire de contact" />
+          alt="button en forme de croix pour fermer le formulaire de contact"
+          aria-label="fermer le formulaire de contact" />
       </header>
       <form id="form-contact">
         <div>
@@ -68,12 +72,14 @@
       </form>
     </div>
   </div>
-  <div id="lightbox-modal">
+  <div id="lightbox-modal" role="dialog" aria-label="image closeup view">
     <div id="lightbox-content">
-      <span class="fa-sharp fa-solid fa-xmark lightbox-close" onclick="closeLightbox()"></span>
-      <span class="fa-solid fa-chevron-left" onclick="showPreviousMedia()"></span>
+      <span class="fa-sharp fa-solid fa-xmark lightbox-close" onclick="closeLightbox()" role="button"
+        aria-label="close dialog"></span>
+      <span class="fa-solid fa-chevron-left" onclick="showPreviousMedia()" role="link"
+        aria-label="Previous image"></span>
       <div id="media-content"></div>
-      <span class="fa-solid fa-chevron-right" onclick="showNextMedia()"></span>
+      <span class="fa-solid fa-chevron-right" onclick="showNextMedia()" role="link" aria-label="Next image"></span>
     </div>
   </div>
 

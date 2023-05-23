@@ -4,8 +4,6 @@ const prenomInput = document.getElementById('prenom');
 const emailInput = document.getElementById('email');
 const messageInput = document.getElementById('message');
 
-// ...
-
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     var isFormValid = true;
