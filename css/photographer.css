@@ -244,7 +244,7 @@ form button {
 .modal header {
     justify-content: space-between;
     width: 100%;
-    height: 150px;
+    height: 130px;
     display: flex;
     align-items: first baseline;
 }
@@ -254,7 +254,7 @@ form button {
 }
 
 .modal header h2 {
-    font-size: 54px;
+    font-size: 45px;
     font-weight: normal;
     text-align: left;
 }
@@ -268,7 +268,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 form div {
@@ -282,7 +282,7 @@ form div {
 form input,
 textarea {
     width: 94%;
-    height: 60px;
+    height: 50px;
     border: none;
     border-radius: 5px;
     font-size: 30px;
@@ -295,7 +295,7 @@ form input:-internal-autofill-selected {
 }
 
 form textarea {
-    height: 170px;
+    height: 140px;
     padding-top: 17px;
     padding-bottom: 17px;
     resize: none;

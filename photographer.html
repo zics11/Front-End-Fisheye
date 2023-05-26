@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/b2206325c8.js" crossorigin="anonymous"></script>
-
   <title>Fisheye - photographe </title>
 </head>
-
 <body>
   <header>
-    <a href="/index.html" role="img" title="Fisheye Home page">
+    <a href="index.html" role="img" title="Fisheye Home page" tabindex="1">
       <img src="assets/images/logo.png" class="logo" role="link" alt="Fisheye Home page" aria-label="logo">
     </a>
   </header>
@@ -21,77 +18,74 @@
     <div class="photograph-header">
     </div>
     <section class="photograph-dropdown">
-      <p>Trier par</p>
+      <p tabindex="1">Trier par</p>
       <div class="dropdown">
         <button id="dropdown-btn" class="dropdown-btn" aria-haspopup="true" aria-expanded="false"
-          aria-controls="dropdown-content" aria-activedescendant="selectedOption">
+          aria-controls="dropdown-content" aria-activedescendant="selectedOption" tabindex="1">
           Popularité
         </button>
         <ul id="dropdown-content" class="dropdown-content" role="menu" aria-labelledby="dropdown-btn">
-          <li tabindex="0" role="menuitem" id="selectedOption" onclick="selectOption('Popularité')" onkeypress="selectOption('Popularité')">Popularité</li>
-          <li tabindex="0" role="menuitem" onclick="selectOption('Date')" onkeypress="selectOption('Date')">Date</li>
-          <li tabindex="0" role="menuitem" onclick="selectOption('Titre')" onkeypress="selectOption('Titre')">Titre</li>
+          <li tabindex="1" role="menuitem" id="selectedOption" onclick="selectOption('Popularité')"
+            onkeypress="selectOption('Popularité')">Popularité</li>
+          <li tabindex="1" role="menuitem" onclick="selectOption('Date')" onkeypress="selectOption('Date')">Date</li>
+          <li tabindex="1" role="menuitem" onclick="selectOption('Titre')" onkeypress="selectOption('Titre')">Titre</li>
         </ul>
       </div>
     </section>
     <section class="photograph-media">
     </section>
   </main>
-  <div id="contact_modal" role="dialog" aria-label>
-    <div class="modal">
+  <div id="contact_modal" role="dialog" tabindex="-1" aria-labelledby="modal-header">
+    <div class="modal" tabindex="1" aria-labelledby="modal-header">
       <header>
-        <div class="modal-header">
-          <h2>Contactez-moi</h2>
+        <div class="modal-header" id="modal-header">
+          <h2 tabindex="1">Contactez-moi</h2>
         </div>
         <img src="assets/icons/close.svg" onclick="closeModal()" class="modal-close" role="button"
           alt="button en forme de croix pour fermer le formulaire de contact"
-          aria-label="fermer le formulaire de contact" />
+          aria-label="fermer le formulaire de contact" tabindex="1" />
       </header>
       <form id="form-contact">
         <div>
-          <label for="nom">Nom:</label>
-          <input type="text" id="nom" name="nom">
+          <label for="nom" tabindex="1">Nom:</label>
+          <input type="text" id="nom" name="nom" tabindex="1">
           <span id="nomError" class="error-message"></span>
         </div>
         <div>
-          <label for="prenom">Prénom:</label>
-          <input type="text" id="prenom" name="prenom">
+          <label for="prenom" tabindex="1">Prénom:</label>
+          <input type="text" id="prenom" name="prenom" tabindex="1">
           <span id="prenomError" class="error-message"></span>
         </div>
         <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" novalidate>
+          <label for="email" tabindex="1">Email:</label>
+          <input type="email" id="email" name="email" novalidate tabindex="1">
           <span id="emailError" class="error-message"></span>
         </div>
         <div>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message"></textarea>
+          <label for="message" tabindex="1">Message:</label>
+          <textarea id="message" name="message" tabindex="1"></textarea>
           <span id="messageError" class="error-message"></span>
         </div>
-        <button type="submit class=" contact_button">Envoyer</button>
+        <button type="submit" class="contact_button" tabindex="1">Envoyer</button>
       </form>
     </div>
   </div>
-  <div id="lightbox-modal" role="dialog" aria-label="image closeup view">
-    <div id="lightbox-content">
-      <span class="fa-sharp fa-solid fa-xmark lightbox-close" onclick="closeLightbox()" role="button"
-        aria-label="close dialog"></span>
-      <span class="fa-solid fa-chevron-left" onclick="showPreviousMedia()" role="link"
-        aria-label="Previous image"></span>
+  <div id="lightbox-modal" role="dialog" aria-label="image closeup view" tabindex="1">
+    <div id="lightbox-content" tabindex="1">
+      <span class="fa-solid fa-chevron-left" onclick="showPreviousMedia()" role="link" aria-label="Previous image"
+        tabindex="2"></span>
       <div id="media-content"></div>
-      <span class="fa-solid fa-chevron-right" onclick="showNextMedia()" role="link" aria-label="Next image"></span>
+      <span class="fa-solid fa-chevron-right" onclick="showNextMedia()" role="link" aria-label="Next image"
+        tabindex="2"></span>
+      <span class="fa-sharp fa-solid fa-xmark lightbox-close" onclick="closeLightbox()" role="button"
+        aria-label="close dialog" tabindex="2"></span>
     </div>
   </div>
-
   <script src="scripts/factories/photographer.js"></script>
   <script src="scripts/factories/media.js"></script>
-  <script src="/scripts/pages/photographer.js"></script>
-  <script src="/scripts/utils/contactForm.js"></script>
-  <script src="/scripts/utils/dropdown.js"></script>
-  <script src="/scripts/utils/lightbox.js"></script>
-
-
-
+  <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/utils/contactForm.js"></script>
+  <script src="scripts/utils/dropdown.js"></script>
+  <script src="scripts/utils/lightbox.js"></script>
 </body>
-
 </html>

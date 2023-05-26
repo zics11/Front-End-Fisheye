@@ -2,8 +2,7 @@ var menu = document.querySelector('.dropdown'); // Bouton du menu déroulant
 var menuButton = document.getElementById('dropdown-btn'); // Bouton du menu déroulant
 var menuList = document.getElementById('dropdown-content'); // Liste des options du menu déroulant
 
-
-// // Fonction appelée pour trié les médias
+// La fonction selectTri est appelée pour trier les médias en fonction de l'option sélectionnée dans le menu déroulant
 async function selectTri(option) {
   // eslint-disable-next-line no-undef
   const { media } = await getPhotographers();
@@ -17,7 +16,6 @@ async function selectTri(option) {
     // eslint-disable-next-line no-undef
     triMediaIdPhotographer(mediaOrdonnees);
   }
-
   if (option === 'Date') {
     mediaOrdonnees.sort(function (a, b) {
       const dateA = new Date(a.date);
@@ -28,7 +26,6 @@ async function selectTri(option) {
     // eslint-disable-next-line no-undef
     triMediaIdPhotographer(mediaOrdonnees);
   }
-
   if (option === 'Titre') {
     mediaOrdonnees.sort(function (a, b) {
       return a.title.localeCompare(b.title);
@@ -39,33 +36,29 @@ async function selectTri(option) {
   }
 }
 
-
-// Fonction appelée lors de la sélection d'une option pour appelé la fonction tri et modifi& le tite du menu
+// La fonction selectOption est appelée lors de la sélection d'une option dans le menu déroulant pour mettre à jour l'option sélectionnée et appeler la fonction selectTri
 function selectOption(option) {
-  menuButton.innerHTML = option; 
-  menuButton.setAttribute('aria-expanded', 'false'); 
-  menuList.style.display = 'none'; 
-  selectTri(option)
+  menuButton.innerHTML = option;
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuList.style.display = 'none';
+  selectTri(option);
   menuButton.setAttribute('aria-activedescendant', 'selectedOption');
 }
 
-// Fonction appelée lors du clic sur le bouton du menu déroulant pour affiché celui ci
+// La fonction toggleMenu est appelée lors du clic sur le bouton du menu déroulant pour afficher ou masquer le menu
 function toggleMenu() {
-  var expanded = menuButton.getAttribute('aria-expanded') === 'true' || false; // Vérifie si le menu est ouvert ou fermé
-  menuButton.setAttribute('aria-expanded', !expanded); // Inverse l'état du menu (ouvert -> fermé, fermé -> ouvert)
-  
+  var expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+  menuButton.setAttribute('aria-expanded', !expanded);
   if (expanded) {
-    menu.classList.remove('open')
+    menu.classList.remove('open');
+  } else {
+    menu.classList.add('open');
   }
-  else {
-    menu.classList.add('open')
-  }
-  
-  menuList.style.display = expanded ? 'none' : 'block'; // Affiche ou masque la liste des options en fonction de l'état du menu
+  menuList.style.display = expanded ? 'none' : 'block';
 }
 
+// Écouteur d'événements pour le clic sur le bouton du menu déroulant
 menuButton.addEventListener('click', toggleMenu);
 
-// Sélectionne l'option 1 par défaut lors du chargement de la page
+// Sélectionne l'option 'Populaire' par défaut lors du chargement de la page
 selectOption('Populaire');
-
